@@ -10,16 +10,16 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@a37ce9120846195fa4ece8f58b268e6043cb2f26 # v3.7.0
       with:
         fetch-depth: 0
         persist-credentials: false
 
     - name: Setup Poetry
-      uses: snok/install-poetry@v1
+      uses: snok/install-poetry@a783c322200f0519c7926aa6faa857c4e23e9263 # v1.4.2
 
     - name: Semantic Release
-      uses: cycjimmy/semantic-release-action@v3
+      uses: cycjimmy/semantic-release-action@8e58d20d0f6c8773181f43eb74d6a05e3099571d # v3.4.2
 
       id: semantic
       with:
@@ -33,6 +33,6 @@ jobs:
 
     - name: Build and publish package
       if: steps.semantic.outputs.new_release_published == 'true'
-      uses: JRubics/poetry-publish@v1.16
+      uses: JRubics/poetry-publish@9321d94aa32d58bf26c1ed321e0574b5e643a751 # v1.16
       with:
         pypi_token: ${{ secrets.PYPI_API_TOKEN }}
